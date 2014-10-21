@@ -29,9 +29,11 @@ Route::get('/', 'HomeController@showWelcome');
 Route::get('login', function()
 {
 	// show the login page (app/views/login.blade.php)
-	return View::make('layouts.login',array(
-			'page_title' => 'Signin Template for Bootstraps'
-			)
-		);
+	return View::make('layouts.login',
+		array(
+			'page_title' => Lang::get('login.login'),
+			'custom_styles' => ['login.css']
+		)
+	);
 });
 Route::post('login', array('uses' => 'LoginController@process'));
