@@ -1,37 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<title>{{ $site_name.' | '.$page_title }}</title>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="description" content="" />
-	<meta name="author" content="" />
+	<meta name="description" content="{{ $site_description }}" />
+	<meta name="author" content="{{ $site_description }}" />
 	<link rel="icon" href="{{ asset('favicon.ico'); }}" />
 
-	<title>{{ $page_title }}</title>
-
 	<!-- Bootstrap core CSS -->
-	<link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+	{{ HTML::style('assets/css/bootstrap.min.css'); }}
 
-	<!-- Custom styles for this template -->
-	<link href="signin.css" rel="stylesheet">
+	<!-- Custom styles -->
+	@foreach ($custom_styles as $style)
+	{{ HTML::style('assets/css/'.$style); }}
+	@endforeach
 
-	<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-	<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-	<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
 </head>
 <body>
 	<div class="container">
 		@yield('content')
 	</div> <!-- /container -->
 
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+	<!-- AngularJS -->
+	{{ HTML::script('assets/js/angular.min.js'); }}
 </body>
 </html>
